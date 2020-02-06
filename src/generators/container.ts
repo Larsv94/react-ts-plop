@@ -8,7 +8,7 @@ const containerGenerator = (plop: NodePlopAPI, config: Config): void => {
     actions: [
       {
         type: 'add',
-        template: '{{cwd}}',
+        templateFile: '../templates/test.hbs',
         path: './test.txt',
         force: config.force,
         abortOnFail: true,

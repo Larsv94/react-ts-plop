@@ -8,7 +8,7 @@ const componentGenerator = (plop: NodePlopAPI, config: Config): void => {
     actions: [
       {
         type: 'add',
-        template: '{{cwd}}',
+        templateFile: 'src/templates/test.hbs',
         path: './test.txt',
         force: config.force,
         abortOnFail: true,
