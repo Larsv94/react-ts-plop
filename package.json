@@ -20,12 +20,13 @@
         "eslint": "^6.1.0",
         "eslint-config-airbnb-base": "^14.0.0",
         "eslint-config-prettier": "^6.10.0",
+        "eslint-import-resolver-typescript": "^2.0.0",
         "eslint-plugin-import": "^2.18.2",
         "eslint-plugin-prettier": "^3.1.2",
-        "plop": "^2.5.3",
         "prettier": "^1.19.1"
     },
     "dependencies": {
+        "plop": "^2.5.3",
         "ts-node": "^8.6.2",
         "typescript": "^3.7.5"
     }

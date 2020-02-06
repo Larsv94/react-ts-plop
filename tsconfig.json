@@ -13,6 +13,9 @@
             "*": [
                 "node_modules/*",
                 "src/types/*"
+            ],
+            "@generators/*": [
+                "src/generators/*"
             ]
         }
     },
