@@ -1,0 +1,16 @@
+import React from "react";
+import { {{properCase name}}Container } from "./{{kebabCase name}}.styled";
+
+export interface {{properCase name}}Props {
+  className?: string;
+}
+
+const {{properCase name}}: React.FC<{{properCase name}}Props> = ({ className }) => {
+  return (
+    <{{properCase name}}Container className={className}>
+      {{properCase name}} works!
+    </{{properCase name}}Container>
+  );
+};
+
+export default {{properCase name}};
