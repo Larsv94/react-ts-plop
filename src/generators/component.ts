@@ -1,7 +1,9 @@
 import { NodePlopAPI } from 'plop';
 import { Config } from '../types/config';
+import GetActions from '../utils/actions';
 
 const componentGenerator = (plop: NodePlopAPI, config: Config): void => {
+  const { Add } = GetActions(config.ComponentPath, config);
   plop.setGenerator('component', {
     description: 'this is a test generator',
     prompts: [
@@ -12,30 +14,9 @@ const componentGenerator = (plop: NodePlopAPI, config: Config): void => {
       }
     ], // array of inquirer prompts
     actions: [
-      {
-        type: 'add',
-        templateFile: 'src/templates/functionComponent/component.tsx.hbs',
-        path: '{{cwdPath name}}.tsx',
-        force: config.force,
-        abortOnFail: true,
-        data: {}
-      },
-      {
-        type: 'add',
-        templateFile: 'src/templates/functionComponent/component.styled.tsx.hbs',
-        path: '{{cwdPath name}}.styled.tsx',
-        force: config.force,
-        abortOnFail: true,
-        data: {}
-      },
-      {
-        type: 'add',
-        templateFile: 'src/templates/functionComponent/index.ts.hbs',
-        path: '{{cwdPath name "index"}}.tsx',
-        force: config.force,
-        abortOnFail: true,
-        data: {}
-      }
+      Add('src/templates/functionComponent/component.tsx.hbs', '{{path name}}.tsx'),
+      Add('src/templates/functionComponent/component.styled.tsx.hbs', '{{path name}}.styled.tsx'),
+      Add('src/templates/functionComponent/index.ts.hbs', '{{path name "index"}}.ts')
     ]
   });
 };

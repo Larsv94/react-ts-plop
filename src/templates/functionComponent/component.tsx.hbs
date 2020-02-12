@@ -1,16 +1,16 @@
 import React from "react";
-import { {{properCase name}}Container } from "./{{kebabCase name}}.styled";
+import { {{componentCase name}}Container } from "./{{fileCase name}}.styled";
 
-export interface {{properCase name}}Props {
+export interface {{componentCase name}}Props {
   className?: string;
 }
 
-const {{properCase name}}: React.FC<{{properCase name}}Props> = ({ className }) => {
+const {{componentCase name}}: React.FC<{{componentCase name}}Props> = ({ className }) => {
   return (
-    <{{properCase name}}Container className={className}>
-      {{properCase name}} works!
-    </{{properCase name}}Container>
+    <{{componentCase name}}Container className={className}>
+      {{componentCase name}} works!
+    </{{componentCase name}}Container>
   );
 };
 
-export default {{properCase name}};
+export default {{componentCase name}};
