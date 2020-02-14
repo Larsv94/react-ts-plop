@@ -11,12 +11,39 @@ const componentGenerator = (plop: NodePlopAPI, config: Config): void => {
         type: 'input',
         name: 'name',
         message: 'Component name?'
+      },
+      {
+        type: 'confirm',
+        name: 'h',
+        message: 'Include hooks?'
+      },
+      {
+        type: 'checkbox',
+        name: 'hook',
+        message: 'hooks to include:',
+        when: (answers): boolean => answers.h,
+        choices: [
+          'useState',
+          'useEffect',
+          'useContext',
+          'useReducer',
+          'useCallback',
+          'useMemo',
+          'useRef',
+          'useLayoutEffect'
+        ]
       }
     ], // array of inquirer prompts
     actions: [
-      Add('src/templates/functionComponent/component.tsx.hbs', '{{path name}}.tsx'),
-      Add('src/templates/functionComponent/component.styled.tsx.hbs', '{{path name}}.styled.tsx'),
-      Add('src/templates/functionComponent/index.ts.hbs', '{{path name "index"}}.ts')
+      Add('src/templates/functionComponent/component.tsx.hbs', '{{path name}}.tsx', {
+        data: { fullComponent: true }
+      }),
+      Add('src/templates/functionComponent/component.styled.tsx.hbs', '{{path name}}.styled.tsx', {
+        data: { fullComponent: true }
+      }),
+      Add('src/templates/functionComponent/index.ts.hbs', '{{path name "index"}}.ts', {
+        data: { fullComponent: true }
+      })
     ]
   });
 };
