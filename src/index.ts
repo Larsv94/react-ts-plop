@@ -3,6 +3,7 @@ import * as path from 'path';
 import { NodePlopAPI, PlopCfg } from 'plop';
 import defaultConfig from './configuration';
 import componentGenerator from './generators/component';
+import singleFileGenerator from './generators/single-file';
 import { Config } from './types/config';
 import BaseHelpers from './utils/helpers';
 
@@ -18,4 +19,5 @@ module.exports = function pack(plop: NodePlopAPI, config: PlopCfg): void {
   );
   plop.addPartial('hooks', hooksPartial);
   componentGenerator(plop, PlopReactConfig);
+  singleFileGenerator(plop, PlopReactConfig);
 };

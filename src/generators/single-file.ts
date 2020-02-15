@@ -2,15 +2,20 @@ import { NodePlopAPI } from 'plop';
 import { Config } from '../types/config';
 import GetActions from '../utils/actions';
 
-const componentGenerator = (plop: NodePlopAPI, config: Config): void => {
+const singleFileGenerator = (plop: NodePlopAPI, config: Config): void => {
   const { Add } = GetActions(config.ComponentPath, config);
-  plop.setGenerator('component', {
+  plop.setGenerator('single-file', {
     description: 'this is a test generator',
     prompts: [
       {
         type: 'input',
         name: 'name',
         message: 'Component name?'
+      },
+      {
+        type: 'input',
+        name: 'folder',
+        message: `Component location (${config.ComponentPath}...) `
       },
       {
         type: 'confirm',
@@ -35,17 +40,17 @@ const componentGenerator = (plop: NodePlopAPI, config: Config): void => {
       }
     ], // array of inquirer prompts
     actions: [
-      Add('src/templates/functionComponent/component.tsx.hbs', '{{path name}}.tsx', {
-        data: { fullComponent: true, styled: true }
-      }),
-      Add('src/templates/functionComponent/component.styled.tsx.hbs', '{{path name}}.styled.tsx', {
-        data: { fullComponent: true, styled: true }
-      }),
-      Add('src/templates/functionComponent/index.ts.hbs', '{{path name "index"}}.ts', {
-        data: { fullComponent: true, styled: true }
+      Add('src/templates/functionComponent/component.tsx.hbs', '{{path folder name}}.tsx', {
+        data: { fullComponent: false }
       })
+      // Add('src/templates/functionComponent/component.styled.tsx.hbs', '{{path name}}.styled.tsx', {
+      //   data: { fullComponent: false }
+      // }),
+      // Add('src/templates/functionComponent/index.ts.hbs', '{{path name "index"}}.ts', {
+      //   data: { fullComponent: false }
+      // })
     ]
   });
 };
 
-export default componentGenerator;
+export default singleFileGenerator;
