@@ -2,8 +2,17 @@ import { NodePlopAPI } from 'plop';
 import { Config } from '../types/config';
 import GetActions from '../utils/actions';
 
+interface SingleFileData {
+  name: string;
+  folder: string;
+  h: boolean;
+  hook: string[];
+  styled: boolean;
+  export: boolean;
+}
+
 const singleFileGenerator = (plop: NodePlopAPI, config: Config): void => {
-  const { Add } = GetActions(config.ComponentPath, config);
+  const { Add, Append } = GetActions(config.ComponentPath, config);
   plop.setGenerator('single-file', {
     description: 'this is a test generator',
     prompts: [
@@ -37,19 +46,42 @@ const singleFileGenerator = (plop: NodePlopAPI, config: Config): void => {
           'useRef',
           'useLayoutEffect'
         ]
+      },
+      {
+        type: 'confirm',
+        name: 'styled',
+        message: 'Include styles?'
+      },
+      { type: 'confirm', name: 'export', message: 'Export module from folder?' }
+    ],
+    actions: ((data: SingleFileData) => {
+      const actions = [];
+      actions.push(
+        Add('src/templates/functionComponent/component.tsx.hbs', '{{path folder name}}.tsx', {
+          data: { fullComponent: false, styled: data.styled }
+        })
+      );
+      if (data.styled) {
+        actions.push(
+          Add(
+            'src/templates/functionComponent/component.styled.tsx.hbs',
+            '{{path folder name}}.styled.tsx',
+            {
+              data: { fullComponent: false, styled: data.styled }
+            }
+          )
+        );
       }
-    ], // array of inquirer prompts
-    actions: [
-      Add('src/templates/functionComponent/component.tsx.hbs', '{{path folder name}}.tsx', {
-        data: { fullComponent: false }
-      })
-      // Add('src/templates/functionComponent/component.styled.tsx.hbs', '{{path name}}.styled.tsx', {
-      //   data: { fullComponent: false }
-      // }),
-      // Add('src/templates/functionComponent/index.ts.hbs', '{{path name "index"}}.ts', {
-      //   data: { fullComponent: false }
-      // })
-    ]
+      if (data.export) {
+        actions.push(
+          Append('{{path folder "index"}}.ts', /import \w+(, {[\w, ]*?})? from "[./\\\w]+";/g, {
+            template: 'export { default as {{componentCase name}} } from "./{{fileCase name}}"'
+          })
+        );
+      }
+      return actions;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    }) as any
   });
 };
 

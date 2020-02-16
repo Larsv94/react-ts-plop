@@ -1,6 +1,6 @@
 {
     "name": "react-ts-plop",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "description": "Plop-pack for React Typescript components",
     "main": "index.js",
     "scripts": {
@@ -30,5 +30,9 @@
         "plop": "^2.5.3",
         "ts-node": "^8.6.2",
         "typescript": "^3.7.5"
+    },
+    "repository": {
+      "type" : "git",
+      "url" : "https://github.com/Larsv94/react-ts-plop.git"
     }
 }

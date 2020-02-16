@@ -1,5 +1,5 @@
 import React{{NamedImport hook}} from "react";
-{{#if fullComponent}}
+{{#if styled}}
 import { {{componentCase name}}Container } from "./{{fileCase name}}.styled";
 {{/if}}
 
@@ -24,9 +24,15 @@ function reducer(state, action) {
 const {{componentCase name}}: React.FC<{{componentCase name}}Props> = ({ className }) => {
   {{> hooks }}
   return (
+    {{#if styled}}
     <{{componentCase name}}Container className={className}>
       {{componentCase name}} works!
     </{{componentCase name}}Container>
+    {{else}}
+    <div className={className}>
+      {{componentCase name}} works!
+    </div>
+    {{/if}}
   );
 };
 
