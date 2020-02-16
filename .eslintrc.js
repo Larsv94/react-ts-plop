@@ -13,7 +13,11 @@ module.exports = {
   ],
   plugins: ['prettier', '@typescript-eslint', 'import'],
   rules: {
-    'prettier/prettier': ['error']
+    'prettier/prettier': ['error'],
+    'import/no-extraneous-dependencies': [
+      'error',
+      { devDependencies: true, optionalDependencies: false, peerDependencies: false }
+    ]
   },
   settings: {
     'import/resolver': {
