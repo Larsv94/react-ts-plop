@@ -1,10 +1,9 @@
-import { Config } from './types/config';
+import { ReactPlopConfig } from './types/config';
 
-const defaultConfig: Config = {
+const defaultConfig: ReactPlopConfig = {
   Style: 'js',
   ComponentPath: '\\src\\components',
-  ContainerPath: '\\src\\containers',
-  force: false
+  ContainerPath: '\\src\\containers'
 };
 
 export default defaultConfig;

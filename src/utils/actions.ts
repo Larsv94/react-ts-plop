@@ -36,8 +36,8 @@ const GetActions = (BasePath: string, cfg: Config) => {
       type: 'append',
       path: `${ActionPath}/${path}`,
       pattern,
-      template,
-      templateFile,
+      template: template || '',
+      templateFile: templateFile || '',
       force: cfg.force,
       abortOnFail: true,
       data: {}

@@ -17,6 +17,16 @@ module.exports = {
     'import/no-extraneous-dependencies': [
       'error',
       { devDependencies: true, optionalDependencies: false, peerDependencies: false }
+    ],
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        js: 'never',
+        jsx: 'never',
+        ts: 'never',
+        tsx: 'never'
+      }
     ]
   },
   settings: {

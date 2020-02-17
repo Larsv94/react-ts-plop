@@ -3,7 +3,7 @@ import { Config } from '../types/config';
 import GetActions from '../utils/actions';
 
 const componentGenerator = (plop: NodePlopAPI, config: Config): void => {
-  const { Add } = GetActions(config.ComponentPath, config);
+  const { Add } = GetActions(config.ComponentPath || '', config);
   plop.setGenerator('component', {
     description: 'this is a test generator',
     prompts: [

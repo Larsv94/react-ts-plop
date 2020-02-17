@@ -8,4 +8,6 @@ export interface ReactPlopConfig {
   ContainerPath: string;
 }
 
-export type Config = Partial<ReactPlopConfig & PlopCfg>;
+
+
+export type Config = ReactPlopConfig & PlopCfg;
