@@ -1,9 +1,12 @@
 {
-  "name": "react-ts-plop",
+  "name": "@larsv94/react-ts-plop",
   "version": "0.2.0",
   "description": "Plop-pack for React Typescript components",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
+    "build": "rimraf ./lib && tsc --emitDeclarationOnly --out lib/index.js && parcel build ./src/index.ts --target node -d lib",
+    "dev": "parcel ./src/index.ts --target node -d lib",
+    "prepare": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -23,13 +26,19 @@
     "eslint-import-resolver-typescript": "^2.0.0",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-prettier": "^3.1.2",
+    "gulp": "^4.0.2",
     "plop": "^2.5.3",
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "typescript": "^3.7.5",
+    "parcel-bundler": "^1.12.4",
+    "rimraf": "^3.0.2"
   },
+  "files": [
+    "lib/**/*",
+    "templates/**/*"
+  ],
   "dependencies": {
-    "change-case": "^4.1.1",
-    "ts-node": "^8.6.2",
-    "typescript": "^3.7.5"
+    "change-case": "^4.1.1"
   },
   "repository": {
     "type": "git",

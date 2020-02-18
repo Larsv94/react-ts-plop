@@ -3,17 +3,23 @@
     "module": "commonjs",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "target": "es6",
+    "target": "es5",
     "noImplicitAny": true,
     "moduleResolution": "node",
-    "sourceMap": true,
-    "outDir": "dist",
+    "sourceMap": false,
+    "declaration": true,
+    "outDir": "./lib",
+    "strict": true,
     "lib": [
       "es2019"
     ]
   },
   "include": [
-    "./src/**/*",
-    "./index.js"
+    "src",
+    "templates/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/__tests__/*"
   ]
 }

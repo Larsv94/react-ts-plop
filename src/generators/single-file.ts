@@ -1,4 +1,6 @@
 import { NodePlopAPI } from 'plop';
+import styledComponentTemplate from '../templates/functionComponent/component.styled.tsx.hbs';
+import functionComponentTemplate from '../templates/functionComponent/component.tsx.hbs';
 import { Config } from '../types/config';
 import GetActions from '../utils/actions';
 
@@ -57,19 +59,15 @@ const singleFileGenerator = (plop: NodePlopAPI, config: Config): void => {
     actions: ((data: SingleFileData) => {
       const actions = [];
       actions.push(
-        Add('src/templates/functionComponent/component.tsx.hbs', '{{path folder name}}.tsx', {
+        Add(functionComponentTemplate, '{{path folder name}}.tsx', {
           data: { fullComponent: false, styled: data.styled }
         })
       );
       if (data.styled) {
         actions.push(
-          Add(
-            'src/templates/functionComponent/component.styled.tsx.hbs',
-            '{{path folder name}}.styled.tsx',
-            {
-              data: { fullComponent: false, styled: data.styled }
-            }
-          )
+          Add(styledComponentTemplate, '{{path folder name}}.styled.tsx', {
+            data: { fullComponent: false, styled: data.styled }
+          })
         );
       }
       if (data.export) {

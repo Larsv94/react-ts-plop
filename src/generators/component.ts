@@ -1,4 +1,7 @@
 import { NodePlopAPI } from 'plop';
+import styledComponentTemplate from '../templates/functionComponent/component.styled.tsx.hbs';
+import functionComponentTemplate from '../templates/functionComponent/component.tsx.hbs';
+import indexTemplate from '../templates/functionComponent/index.ts.hbs';
 import { Config } from '../types/config';
 import GetActions from '../utils/actions';
 
@@ -35,13 +38,13 @@ const componentGenerator = (plop: NodePlopAPI, config: Config): void => {
       }
     ], // array of inquirer prompts
     actions: [
-      Add('src/templates/functionComponent/component.tsx.hbs', '{{path name}}.tsx', {
+      Add(functionComponentTemplate, '{{path name}}.tsx', {
         data: { fullComponent: true, styled: true }
       }),
-      Add('src/templates/functionComponent/component.styled.tsx.hbs', '{{path name}}.styled.tsx', {
+      Add(styledComponentTemplate, '{{path name}}.styled.tsx', {
         data: { fullComponent: true, styled: true }
       }),
-      Add('src/templates/functionComponent/index.ts.hbs', '{{path name "index"}}.ts', {
+      Add(indexTemplate, '{{path name "index"}}.ts', {
         data: { fullComponent: true, styled: true }
       })
     ]
