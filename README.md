@@ -14,7 +14,7 @@ In your plopfile, use `plop.load` to include all react-ts-plop generators:
 
 ```js
 module.exports = plop => {
-    plop.load("react-ts-plop");
+    plop.load("@larsv94/react-ts-plop");
 
     //your own plop generators...
 };
