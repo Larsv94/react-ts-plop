@@ -1,10 +1,10 @@
 {
   "name": "@larsv94/react-ts-plop",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Plop-pack for React Typescript components",
   "main": "lib/index.js",
   "scripts": {
-    "build": "rimraf ./lib && tsc --emitDeclarationOnly --out lib/index.js && parcel build ./src/index.ts --target node -d lib",
+    "build": "rimraf ./lib && tsc --emitDeclarationOnly --out lib/index.js && parcel build ./src/index.ts --target node -d lib --public-url ./",
     "dev": "parcel ./src/index.ts --target node -d lib",
     "prepare": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
